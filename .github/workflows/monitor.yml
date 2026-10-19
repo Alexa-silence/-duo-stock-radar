@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: duo-stock-radar
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   monitor:
