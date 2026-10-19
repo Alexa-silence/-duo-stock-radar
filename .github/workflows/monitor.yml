@@ -1,0 +1,300 @@
+name: Duo Stock Radar
+
+on:
+  schedule:
+    - cron: "2-57/5 * * * *"
+  workflow_dispatch:
+    inputs:
+      test_bark:
+        description: "Send a test Bark notification only"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: duo-stock-radar
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+
+    env:
+      BARK_KEY: ${{ secrets.BARK_KEY }}
+      TEST_BARK: ${{ github.event.inputs.test_bark }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Apple stock and notify
+        shell: bash
+        run: |
+          python3 <<'PY'
+          import json
+          import os
+          import sys
+          from pathlib import Path
+          from urllib.parse import urlencode, quote
+          from urllib.request import Request, urlopen
+          from urllib.error import HTTPError, URLError
+
+          PRODUCTS = [
+              {"part": "MK2M4CH/A", "short": "256 白", "rank": 1},
+              {"part": "MK2N4CH/A", "short": "256 黑", "rank": 2},
+              {"part": "MK2P4CH/A", "short": "512 白", "rank": 3},
+          ]
+
+          STORES = {
+              "R678": "静安",
+              "R359": "南京东路",
+              "R389": "浦东",
+              "R390": "香港广场",
+              "R401": "上海环贸 iapm",
+              "R581": "五角场",
+              "R683": "环球港",
+              "R705": "七宝",
+          }
+
+          STATE_FILE = Path("state.json")
+          BARK_KEY = os.environ.get("BARK_KEY", "").strip()
+          TEST_BARK = os.environ.get("TEST_BARK", "").strip().lower() in {
+              "1", "true", "yes", "on"
+          }
+
+          def send_bark(title, body, click_url=None):
+              if not BARK_KEY:
+                  raise RuntimeError(
+                      "BARK_KEY is missing. Add it in Settings > "
+                      "Secrets and variables > Actions."
+                  )
+
+              push_url = (
+                  "https://api.day.app/"
+                  + quote(BARK_KEY, safe="")
+                  + "/"
+                  + quote(title, safe="")
+                  + "/"
+                  + quote(body, safe="")
+              )
+
+              params = {"group": "Duo Radar", "level": "timeSensitive"}
+              if click_url:
+                  params["url"] = click_url
+
+              request = Request(
+                  push_url + "?" + urlencode(params),
+                  headers={
+                      "User-Agent": "Mozilla/5.0",
+                      "Accept": "application/json,text/plain,*/*",
+                  },
+                  method="GET",
+              )
+
+              try:
+                  with urlopen(request, timeout=30) as response:
+                      status = response.getcode()
+                      response.read()
+              except HTTPError as error:
+                  raise RuntimeError(f"Bark returned HTTP {error.code}") from None
+              except URLError as error:
+                  raise RuntimeError(f"Bark connection failed: {error.reason}") from None
+
+              if not 200 <= status < 300:
+                  raise RuntimeError(f"Bark returned HTTP {status}")
+
+              print("Bark notification sent successfully.")
+
+          if TEST_BARK:
+              send_bark(
+                  "🍎 Duo Radar 测试成功",
+                  "GitHub Actions 已经可以给你的 iPhone 发 Bark 提醒。",
+                  "https://www.apple.com.cn/shop/buy-iphone/iphone-duo",
+              )
+              sys.exit(0)
+
+          if not BARK_KEY:
+              raise RuntimeError(
+                  "BARK_KEY is missing. Add it in Settings > "
+                  "Secrets and variables > Actions."
+              )
+
+          previous = {}
+          if STATE_FILE.exists():
+              try:
+                  previous = json.loads(STATE_FILE.read_text(encoding="utf-8"))
+              except Exception:
+                  print("Warning: invalid state.json; starting from empty state.")
+                  previous = {}
+
+          params = [
+              ("pl", "true"),
+              ("mts.0", "regular"),
+              ("location", "200000"),
+          ]
+          for index, product in enumerate(PRODUCTS):
+              params.append((f"parts.{index}", product["part"]))
+
+          apple_url = (
+              "https://www.apple.com.cn/shop/retail/pickup-message?"
+              + urlencode(params)
+          )
+
+          request = Request(
+              apple_url,
+              headers={
+                  "Accept": "application/json, text/plain, */*",
+                  "Accept-Language": "zh-CN,zh;q=0.9",
+                  "Referer": "https://www.apple.com.cn/shop/buy-iphone/iphone-duo/",
+                  "User-Agent": (
+                      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/140.0 Safari/537.36"
+                  ),
+              },
+              method="GET",
+          )
+
+          try:
+              with urlopen(request, timeout=40) as response:
+                  if response.getcode() != 200:
+                      raise RuntimeError(f"Apple returned HTTP {response.getcode()}")
+                  data = json.load(response)
+          except HTTPError as error:
+              raise RuntimeError(f"Apple returned HTTP {error.code}") from None
+          except URLError as error:
+              raise RuntimeError(f"Apple connection failed: {error.reason}") from None
+
+          body = data.get("body") or {}
+          if body.get("errorMessage"):
+              raise RuntimeError(f"Apple error: {body['errorMessage']}")
+
+          returned_stores = body.get("stores") or []
+          if not returned_stores:
+              raise RuntimeError("Apple returned no store data; state was not changed.")
+
+          stores_by_id = {
+              str(store.get("storeNumber")): store
+              for store in returned_stores
+              if store.get("storeNumber")
+          }
+
+          current = dict(previous)
+          newly_available = []
+          known_status_count = 0
+
+          for store_id, preferred_name in STORES.items():
+              store = stores_by_id.get(store_id)
+
+              if not store:
+                  print(f"UNKNOWN  {preferred_name}: store missing from Apple response")
+                  continue
+
+              store_name = store.get("storeName") or preferred_name
+              parts = store.get("partsAvailability") or {}
+
+              for product in PRODUCTS:
+                  key = f"{store_id}|{product['part']}"
+                  info = parts.get(product["part"]) or {}
+                  display = str(info.get("pickupDisplay") or "").lower()
+                  quote_text = str(info.get("pickupSearchQuote") or "")
+
+                  if display == "available":
+                      known_status_count += 1
+                      current[key] = True
+
+                      if not bool(previous.get(key, False)):
+                          newly_available.append(
+                              {
+                                  "rank": product["rank"],
+                                  "part": product["part"],
+                                  "product": product["short"],
+                                  "store": store_name,
+                                  "quote": quote_text,
+                              }
+                          )
+
+                      print(
+                          f"AVAILABLE {store_name} | {product['short']} | "
+                          f"{quote_text or '可取货'}"
+                      )
+
+                  elif display == "unavailable":
+                      known_status_count += 1
+                      current[key] = False
+                      print(f"NO STOCK  {store_name} | {product['short']}")
+
+                  else:
+                      print(
+                          f"UNKNOWN   {store_name} | {product['short']} | "
+                          f"pickupDisplay={display!r}"
+                      )
+
+          if known_status_count == 0:
+              raise RuntimeError(
+                  "Apple returned no recognizable availability states; "
+                  "state was not changed."
+              )
+
+          newly_available.sort(key=lambda item: (item["rank"], item["store"]))
+
+          if newly_available:
+              best = newly_available[0]
+
+              lines = []
+              for item in newly_available[:12]:
+                  suffix = f" · {item['quote']}" if item["quote"] else ""
+                  lines.append(
+                      f"{item['rank']}. {item['product']} · {item['store']}{suffix}"
+                  )
+
+              if len(newly_available) > 12:
+                  lines.append(f"另有 {len(newly_available) - 12} 条新库存")
+
+              title = f"🔥 Duo 有货：{best['product']} · {best['store']}"
+              message = "\n".join(lines)
+
+              buy_url = (
+                  "https://www.apple.com.cn/shop/buy-iphone/iphone-duo/"
+                  + best["part"].lower()
+              )
+
+              send_bark(title, message, buy_url)
+          else:
+              print("No newly available inventory. No notification sent.")
+
+          if current != previous or not STATE_FILE.exists():
+              STATE_FILE.write_text(
+                  json.dumps(current, ensure_ascii=False, indent=2, sort_keys=True)
+                  + "\n",
+                  encoding="utf-8",
+              )
+              print("state.json updated.")
+          else:
+              print("state.json unchanged.")
+          PY
+
+      - name: Persist stock state
+        if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.test_bark != 'true' }}
+        shell: bash
+        run: |
+          if [ ! -f state.json ]; then
+            echo "No state file to persist."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add state.json
+
+          if git diff --cached --quiet; then
+            echo "Inventory state did not change."
+            exit 0
+          fi
+
+          git commit -m "chore: update Duo inventory state"
+          git push
