@@ -35,6 +35,7 @@ jobs:
           import json
           import os
           import sys
+          from concurrent.futures import ThreadPoolExecutor
           from pathlib import Path
           from urllib.parse import urlencode, quote
           from urllib.request import Request, urlopen
@@ -42,7 +43,7 @@ jobs:
 
           PRODUCTS = [
               {"part": "MK2M4CH/A", "short": "256 白", "rank": 1},
-              {"part": "MK2N4CH/A", "short": "256 黑", "rank": 2},
+              {"part": "MK2N4CH/A", "short": "256 夜空", "rank": 2},
               {"part": "MK2P4CH/A", "short": "512 白", "rank": 3},
           ]
 
@@ -128,67 +129,117 @@ jobs:
                   print("Warning: invalid state.json; starting from empty state.")
                   previous = {}
 
-          params = [
-              ("pl", "true"),
-              ("mts.0", "regular"),
-              ("location", "200000"),
-          ]
-          for index, product in enumerate(PRODUCTS):
-              params.append((f"parts.{index}", product["part"]))
+          def fetch_store(store_item):
+              store_id, preferred_name = store_item
 
-          apple_url = (
-              "https://www.apple.com.cn/shop/retail/pickup-message?"
-              + urlencode(params)
-          )
+              params = [
+                  ("pl", "true"),
+                  ("mts.0", "regular"),
+                  ("store", store_id),
+              ]
+              for index, product in enumerate(PRODUCTS):
+                  params.append((f"parts.{index}", product["part"]))
 
-          request = Request(
-              apple_url,
-              headers={
-                  "Accept": "application/json, text/plain, */*",
-                  "Accept-Language": "zh-CN,zh;q=0.9",
-                  "Referer": "https://www.apple.com.cn/shop/buy-iphone/iphone-duo/",
-                  "User-Agent": (
-                      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                      "AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/140.0 Safari/537.36"
+              apple_url = (
+                  "https://www.apple.com.cn/shop/retail/pickup-message?"
+                  + urlencode(params)
+              )
+
+              request = Request(
+                  apple_url,
+                  headers={
+                      "Accept": "application/json, text/plain, */*",
+                      "Accept-Language": "zh-CN,zh;q=0.9",
+                      "Referer": "https://www.apple.com.cn/shop/buy-iphone/iphone-duo/",
+                      "User-Agent": (
+                          "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                          "AppleWebKit/537.36 (KHTML, like Gecko) "
+                          "Chrome/140.0 Safari/537.36"
+                      ),
+                  },
+                  method="GET",
+              )
+
+              try:
+                  with urlopen(request, timeout=20) as response:
+                      if response.getcode() != 200:
+                          return {
+                              "store_id": store_id,
+                              "preferred_name": preferred_name,
+                              "store": None,
+                              "error": f"Apple returned HTTP {response.getcode()}",
+                          }
+                      data = json.load(response)
+              except HTTPError as error:
+                  return {
+                      "store_id": store_id,
+                      "preferred_name": preferred_name,
+                      "store": None,
+                      "error": f"Apple returned HTTP {error.code}",
+                  }
+              except URLError as error:
+                  return {
+                      "store_id": store_id,
+                      "preferred_name": preferred_name,
+                      "store": None,
+                      "error": f"Apple connection failed: {error.reason}",
+                  }
+              except Exception as error:
+                  return {
+                      "store_id": store_id,
+                      "preferred_name": preferred_name,
+                      "store": None,
+                      "error": f"Apple query failed: {error}",
+                  }
+
+              body = data.get("body") or {}
+              if body.get("errorMessage"):
+                  return {
+                      "store_id": store_id,
+                      "preferred_name": preferred_name,
+                      "store": None,
+                      "error": f"Apple error: {body['errorMessage']}",
+                  }
+
+              returned_stores = body.get("stores") or []
+              matched = next(
+                  (
+                      store
+                      for store in returned_stores
+                      if str(store.get("storeNumber")) == store_id
                   ),
-              },
-              method="GET",
-          )
+                  None,
+              )
 
-          try:
-              with urlopen(request, timeout=40) as response:
-                  if response.getcode() != 200:
-                      raise RuntimeError(f"Apple returned HTTP {response.getcode()}")
-                  data = json.load(response)
-          except HTTPError as error:
-              raise RuntimeError(f"Apple returned HTTP {error.code}") from None
-          except URLError as error:
-              raise RuntimeError(f"Apple connection failed: {error.reason}") from None
+              if not matched:
+                  return {
+                      "store_id": store_id,
+                      "preferred_name": preferred_name,
+                      "store": None,
+                      "error": "exact store missing from Apple response",
+                  }
 
-          body = data.get("body") or {}
-          if body.get("errorMessage"):
-              raise RuntimeError(f"Apple error: {body['errorMessage']}")
+              return {
+                  "store_id": store_id,
+                  "preferred_name": preferred_name,
+                  "store": matched,
+                  "error": None,
+              }
 
-          returned_stores = body.get("stores") or []
-          if not returned_stores:
-              raise RuntimeError("Apple returned no store data; state was not changed.")
-
-          stores_by_id = {
-              str(store.get("storeNumber")): store
-              for store in returned_stores
-              if store.get("storeNumber")
-          }
+          with ThreadPoolExecutor(max_workers=len(STORES)) as executor:
+              store_results = list(executor.map(fetch_store, STORES.items()))
 
           current = dict(previous)
           newly_available = []
           known_status_count = 0
 
-          for store_id, preferred_name in STORES.items():
-              store = stores_by_id.get(store_id)
+          for result in store_results:
+              store_id = result["store_id"]
+              preferred_name = result["preferred_name"]
+              store = result["store"]
 
-              if not store:
-                  print(f"UNKNOWN  {preferred_name}: store missing from Apple response")
+              if result["error"]:
+                  print(f"UNKNOWN  {preferred_name}: {result['error']}")
                   continue
 
               store_name = store.get("storeName") or preferred_name
