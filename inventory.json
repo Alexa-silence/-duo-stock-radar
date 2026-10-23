@@ -1,0 +1,165 @@
+{
+  "checkedAt": "2026-10-23T16:25:30+08:00",
+  "stores": [
+    {
+      "id": "R678",
+      "products": [
+        {
+          "part": "MK2M4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2N4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2P4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        }
+      ]
+    },
+    {
+      "id": "R359",
+      "products": [
+        {
+          "part": "MK2M4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2N4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2P4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        }
+      ]
+    },
+    {
+      "id": "R389",
+      "products": [
+        {
+          "part": "MK2M4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2N4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2P4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        }
+      ]
+    },
+    {
+      "id": "R390",
+      "products": [
+        {
+          "part": "MK2M4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2N4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2P4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        }
+      ]
+    },
+    {
+      "id": "R401",
+      "products": [
+        {
+          "part": "MK2M4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2N4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2P4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        }
+      ]
+    },
+    {
+      "id": "R581",
+      "products": [
+        {
+          "part": "MK2M4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2N4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2P4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        }
+      ]
+    },
+    {
+      "id": "R683",
+      "products": [
+        {
+          "part": "MK2M4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2N4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2P4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        }
+      ]
+    },
+    {
+      "id": "R705",
+      "products": [
+        {
+          "part": "MK2M4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2N4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        },
+        {
+          "part": "MK2P4CH/A",
+          "status": "unavailable",
+          "quote": "暂无供应"
+        }
+      ]
+    }
+  ]
+}
