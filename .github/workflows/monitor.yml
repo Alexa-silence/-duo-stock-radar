@@ -14,7 +14,7 @@ permissions:
 
 concurrency:
   group: duo-stock-radar
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
       - name: Check Apple stock and notify
         shell: bash
@@ -37,6 +39,7 @@ jobs:
           import sys
           from concurrent.futures import ThreadPoolExecutor
           from pathlib import Path
+          from datetime import datetime, timezone, timedelta
           from urllib.parse import urlencode, quote
           from urllib.request import Request, urlopen
           from urllib.error import HTTPError, URLError
@@ -59,6 +62,7 @@ jobs:
           }
 
           STATE_FILE = Path("state.json")
+          HISTORY_FILE = Path("history.json")
           BARK_KEY = os.environ.get("BARK_KEY", "").strip()
           TEST_BARK = os.environ.get("TEST_BARK", "").strip().lower() in {
               "1", "true", "yes", "on"
@@ -128,6 +132,22 @@ jobs:
               except Exception:
                   print("Warning: invalid state.json; starting from empty state.")
                   previous = {}
+
+          # History is independent of Bark acknowledgement, so failed pushes can retry.
+          history = json.loads(HISTORY_FILE.read_text(encoding="utf-8")) if HISTORY_FILE.exists() else []
+          if not isinstance(history, list):
+              raise ValueError("history.json must be a list; refusing to overwrite it.")
+          active_events = {}
+          for event in history:
+              if not isinstance(event, dict) or not all(
+                  field in event for field in ("storeId", "part", "store", "product", "firstSeen", "lastSeen", "endedAt")
+              ):
+                  raise ValueError("Invalid history event; refusing to overwrite history.json.")
+              if event["endedAt"] is None:
+                  key = f"{event['storeId']}|{event['part']}"
+                  if key in active_events:
+                      raise ValueError(f"Duplicate active history event: {key}")
+                  active_events[key] = event
 
           def fetch_store(store_item):
               store_id, preferred_name = store_item
@@ -229,6 +249,7 @@ jobs:
           with ThreadPoolExecutor(max_workers=len(STORES)) as executor:
               store_results = list(executor.map(fetch_store, STORES.items()))
 
+          observed_at = datetime.now(timezone(timedelta(hours=8))).isoformat(timespec="seconds")
           current = dict(previous)
           newly_available = []
           known_status_count = 0
@@ -254,6 +275,21 @@ jobs:
                   if display == "available":
                       known_status_count += 1
                       current[key] = True
+                      event = active_events.get(key)
+                      if event is None:
+                          event = {
+                              "storeId": store_id,
+                              "store": store_name,
+                              "part": product["part"],
+                              "product": product["short"],
+                              "firstSeen": observed_at,
+                              "lastSeen": observed_at,
+                              "endedAt": None,
+                          }
+                          history.append(event)
+                          active_events[key] = event
+                      else:
+                          event["lastSeen"] = observed_at
 
                       if not bool(previous.get(key, False)):
                           newly_available.append(
@@ -274,6 +310,9 @@ jobs:
                   elif display == "unavailable":
                       known_status_count += 1
                       current[key] = False
+                      event = active_events.pop(key, None)
+                      if event is not None:
+                          event["endedAt"] = observed_at
                       print(f"NO STOCK  {store_name} | {product['short']}")
 
                   else:
@@ -287,6 +326,11 @@ jobs:
                   "Apple returned no recognizable availability states; "
                   "state was not changed."
               )
+
+          history_text = json.dumps(history, ensure_ascii=False, indent=2) + "\n"
+          if not HISTORY_FILE.exists() or HISTORY_FILE.read_text(encoding="utf-8") != history_text:
+              HISTORY_FILE.write_text(history_text, encoding="utf-8")
+              print("history.json updated.")
 
           newly_available.sort(key=lambda item: (item["rank"], item["store"]))
 
@@ -326,24 +370,27 @@ jobs:
               print("state.json unchanged.")
           PY
 
-      - name: Persist stock state
-        if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.test_bark != 'true' }}
+      - name: Persist stock state and history
+        if: ${{ always() && !cancelled() && (github.event_name != 'workflow_dispatch' || github.event.inputs.test_bark != 'true') }}
         shell: bash
         run: |
-          if [ ! -f state.json ]; then
-            echo "No state file to persist."
+          if [ ! -f state.json ] && [ ! -f history.json ]; then
+            echo "No inventory files to persist."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add state.json
+          for file in state.json history.json; do
+            if [ -f "$file" ]; then git add "$file"; fi
+          done
 
           if git diff --cached --quiet; then
-            echo "Inventory state did not change."
+            echo "Inventory state and history did not change."
             exit 0
           fi
 
-          git commit -m "chore: update Duo inventory state"
-          git push
+          git commit -m "chore: update Duo inventory state and history"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
