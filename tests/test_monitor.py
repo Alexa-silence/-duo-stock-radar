@@ -31,6 +31,7 @@ class MonitorTest(unittest.TestCase):
         self.fail_bark = False
         self.pushes = 0
         self.round = 0
+        self.all_unknown = False
         self.queries = []
 
     def run_monitor(self, test_bark=False):
@@ -53,6 +54,8 @@ class MonitorTest(unittest.TestCase):
                 store_id = params['store'][0]
                 self.queries.append(params)
                 parts = {params[f'parts.{i}'][0]: {'pickupDisplay': self.status if store_id == 'R389' and i == 0 else 'unavailable'} for i in range(3)}
+                if self.all_unknown:
+                    parts = {}
                 stores = [{'storeNumber': store_id, 'partsAvailability': parts}]
                 if self.missing_store and store_id == 'R389':
                     stores = [{'storeNumber': 'R999', 'partsAvailability': parts}]
@@ -111,6 +114,8 @@ class MonitorTest(unittest.TestCase):
             self.run_monitor()
         self.assertEqual(len(self.history()), 1)
         self.assertFalse(json.loads(Path('state.json').read_text())[KEY])
+        snapshot = json.loads(Path('inventory.json').read_text())
+        self.assertEqual(next(s for s in snapshot['stores'] if s['id'] == 'R389')['products'][0]['status'], 'available')
         self.fail_bark = False
         self.run_monitor()
         self.assertEqual(self.pushes, 1)
@@ -131,6 +136,23 @@ class MonitorTest(unittest.TestCase):
         self.assertEqual(self.pushes, 1)
         self.assertFalse(Path('history.json').exists())
         self.assertFalse(Path('state.json').exists())
+        self.assertFalse(Path('inventory.json').exists())
+
+    def test_snapshot_keeps_unknown_separate_from_saved_bark_state(self):
+        self.status = 'available'
+        self.run_monitor()
+        self.missing_store = True
+        self.run_monitor()
+        snapshot = json.loads(Path('inventory.json').read_text())
+        self.assertEqual(len(snapshot['stores']), 8)
+        self.assertEqual(next(s for s in snapshot['stores'] if s['id'] == 'R389')['products'][0]['status'], 'unknown')
+        self.assertTrue(json.loads(Path('state.json').read_text())[KEY])
+        self.all_unknown = True
+        with self.assertRaisesRegex(RuntimeError, 'no recognizable'):
+            self.run_monitor()
+        snapshot = json.loads(Path('inventory.json').read_text())
+        self.assertTrue(all(p['status'] == 'unknown' for s in snapshot['stores'] for p in s['products']))
+        self.assertIsNone(self.history()[0]['endedAt'])
 
 
 if __name__ == '__main__':

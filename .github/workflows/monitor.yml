@@ -250,6 +250,23 @@ jobs:
               store_results = list(executor.map(fetch_store, STORES.items()))
 
           observed_at = datetime.now(timezone(timedelta(hours=8))).isoformat(timespec="seconds")
+          snapshot = {"checkedAt": observed_at, "stores": []}
+          for result in store_results:
+              matched = result["store"] or {}
+              parts = matched.get("partsAvailability") or {}
+              products = []
+              for product in PRODUCTS:
+                  info = parts.get(product["part"]) or {}
+                  display = str(info.get("pickupDisplay") or "").lower()
+                  status = display if not result["error"] and display in {"available", "unavailable"} else "unknown"
+                  products.append({"part": product["part"], "status": status,
+                                   "quote": str(info.get("pickupSearchQuote") or "")})
+              snapshot["stores"].append({"id": result["store_id"], "products": products})
+          # Publish observations even if Bark fails or every Apple result is unknown.
+          Path("inventory.json").write_text(
+              json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+
           current = dict(previous)
           newly_available = []
           known_status_count = 0
@@ -374,7 +391,7 @@ jobs:
         if: ${{ always() && !cancelled() && (github.event_name != 'workflow_dispatch' || github.event.inputs.test_bark != 'true') }}
         shell: bash
         run: |
-          if [ ! -f state.json ] && [ ! -f history.json ]; then
+          if [ ! -f state.json ] && [ ! -f history.json ] && [ ! -f inventory.json ]; then
             echo "No inventory files to persist."
             exit 0
           fi
@@ -382,7 +399,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          for file in state.json history.json; do
+          for file in state.json history.json inventory.json; do
             if [ -f "$file" ]; then git add "$file"; fi
           done
 

@@ -45,3 +45,9 @@ python3 -m unittest discover -s tests -v
 ```
 
 测试直接执行工作流中实际的 Python，模拟 Apple 和 Bark，不访问真实接口或发送通知。
+
+## 当前库存快照
+
+`inventory.json` 每轮保存 `checkedAt`（北京时间）及 `stores[].id`、`stores[].products[]`（`part`、`status`、`quote`）。状态为 `available` / `unavailable` / `unknown`。它来自与 Bark 相同的 exact-store 查询；与用于通知去重的 `state.json` 分开，查询失败不会沿用旧的真假状态。即使本轮全为未知或 Bark 失败也提交快照。
+
+新版 Worker 应读取此快照，不再直接查询 Apple；超过 5 分钟的快照显示过期并将当前库存显示为未知。页面展示最近检测时间，GitHub 提交及原始文件缓存可能带来同步延迟。
