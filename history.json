@@ -232,5 +232,41 @@
     "firstSeen": "2026-10-25T15:17:29+08:00",
     "lastSeen": "2026-10-25T15:17:29+08:00",
     "endedAt": "2026-10-25T15:18:28+08:00"
+  },
+  {
+    "storeId": "R678",
+    "store": "静安",
+    "part": "MK2N4CH/A",
+    "product": "256 夜空",
+    "firstSeen": "2026-10-25T21:40:30+08:00",
+    "lastSeen": "2026-10-25T21:40:30+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R581",
+    "store": "五角场",
+    "part": "MK2N4CH/A",
+    "product": "256 夜空",
+    "firstSeen": "2026-10-25T21:40:30+08:00",
+    "lastSeen": "2026-10-25T21:40:30+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R683",
+    "store": "环球港",
+    "part": "MK2N4CH/A",
+    "product": "256 夜空",
+    "firstSeen": "2026-10-25T21:40:30+08:00",
+    "lastSeen": "2026-10-25T21:40:30+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R705",
+    "store": "七宝",
+    "part": "MK2N4CH/A",
+    "product": "256 夜空",
+    "firstSeen": "2026-10-25T21:40:30+08:00",
+    "lastSeen": "2026-10-25T21:40:30+08:00",
+    "endedAt": null
   }
 ]
