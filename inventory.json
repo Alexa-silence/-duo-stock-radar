@@ -1,23 +1,23 @@
 {
-  "checkedAt": "2026-10-27T22:07:33+08:00",
+  "checkedAt": "2026-10-27T22:08:31+08:00",
   "stores": [
     {
       "id": "R678",
       "products": [
         {
           "part": "MK2M4CH/A",
-          "status": "unavailable",
-          "quote": "暂无供应"
+          "status": "unknown",
+          "quote": ""
         },
         {
           "part": "MK2N4CH/A",
-          "status": "unavailable",
-          "quote": "暂无供应"
+          "status": "unknown",
+          "quote": ""
         },
         {
           "part": "MK2P4CH/A",
-          "status": "unavailable",
-          "quote": "暂无供应"
+          "status": "unknown",
+          "quote": ""
         }
       ]
     },
@@ -106,18 +106,18 @@
       "products": [
         {
           "part": "MK2M4CH/A",
-          "status": "unavailable",
-          "quote": "暂无供应"
+          "status": "unknown",
+          "quote": ""
         },
         {
           "part": "MK2N4CH/A",
-          "status": "unavailable",
-          "quote": "暂无供应"
+          "status": "unknown",
+          "quote": ""
         },
         {
           "part": "MK2P4CH/A",
-          "status": "unavailable",
-          "quote": "暂无供应"
+          "status": "unknown",
+          "quote": ""
         }
       ]
     },
