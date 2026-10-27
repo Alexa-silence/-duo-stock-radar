@@ -358,5 +358,23 @@
     "firstSeen": "2026-10-27T08:30:28+08:00",
     "lastSeen": "2026-10-27T08:30:28+08:00",
     "endedAt": "2026-10-27T08:31:28+08:00"
+  },
+  {
+    "storeId": "R705",
+    "store": "七宝",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-10-27T08:52:30+08:00",
+    "lastSeen": "2026-10-27T08:52:30+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R705",
+    "store": "七宝",
+    "part": "MK2N4CH/A",
+    "product": "256 夜空",
+    "firstSeen": "2026-10-27T08:52:30+08:00",
+    "lastSeen": "2026-10-27T08:52:30+08:00",
+    "endedAt": null
   }
 ]
