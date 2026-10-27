@@ -1,6 +1,6 @@
 {
   "R359|MK2M4CH/A": false,
-  "R359|MK2N4CH/A": true,
+  "R359|MK2N4CH/A": false,
   "R359|MK2P4CH/A": false,
   "R389|MK2M4CH/A": false,
   "R389|MK2N4CH/A": false,
@@ -10,7 +10,7 @@
   "R390|MK2P4CH/A": false,
   "R401|MK2M4CH/A": false,
   "R401|MK2N4CH/A": false,
-  "R401|MK2P4CH/A": false,
+  "R401|MK2P4CH/A": true,
   "R581|MK2M4CH/A": false,
   "R581|MK2N4CH/A": false,
   "R581|MK2P4CH/A": false,
