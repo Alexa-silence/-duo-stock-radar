@@ -907,5 +907,41 @@
     "firstSeen": "2026-10-31T09:08:29+08:00",
     "lastSeen": "2026-10-31T09:08:29+08:00",
     "endedAt": "2026-10-31T09:09:30+08:00"
+  },
+  {
+    "storeId": "R678",
+    "store": "静安",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-10-31T09:12:28+08:00",
+    "lastSeen": "2026-10-31T09:12:28+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R678",
+    "store": "静安",
+    "part": "MK2N4CH/A",
+    "product": "256 夜空",
+    "firstSeen": "2026-10-31T09:12:28+08:00",
+    "lastSeen": "2026-10-31T09:12:28+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R359",
+    "store": "南京东路",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-10-31T09:12:28+08:00",
+    "lastSeen": "2026-10-31T09:12:28+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R359",
+    "store": "南京东路",
+    "part": "MK2N4CH/A",
+    "product": "256 夜空",
+    "firstSeen": "2026-10-31T09:12:28+08:00",
+    "lastSeen": "2026-10-31T09:12:28+08:00",
+    "endedAt": null
   }
 ]
