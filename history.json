@@ -943,5 +943,32 @@
     "firstSeen": "2026-10-31T09:12:28+08:00",
     "lastSeen": "2026-10-31T09:14:28+08:00",
     "endedAt": "2026-10-31T09:15:40+08:00"
+  },
+  {
+    "storeId": "R401",
+    "store": "上海环贸 iapm ",
+    "part": "MK2N4CH/A",
+    "product": "256 夜空",
+    "firstSeen": "2026-10-31T09:22:29+08:00",
+    "lastSeen": "2026-10-31T09:22:29+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R581",
+    "store": "五角场",
+    "part": "MK2N4CH/A",
+    "product": "256 夜空",
+    "firstSeen": "2026-10-31T09:22:29+08:00",
+    "lastSeen": "2026-10-31T09:22:29+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R683",
+    "store": "环球港",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-10-31T09:22:29+08:00",
+    "lastSeen": "2026-10-31T09:22:29+08:00",
+    "endedAt": null
   }
 ]
