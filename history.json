@@ -2210,7 +2210,7 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-05T20:26:29+08:00",
-    "lastSeen": "2026-11-05T20:35:30+08:00",
+    "lastSeen": "2026-11-05T20:36:33+08:00",
     "endedAt": null
   },
   {
@@ -2264,7 +2264,7 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-05T20:32:30+08:00",
-    "lastSeen": "2026-11-05T20:35:30+08:00",
+    "lastSeen": "2026-11-05T20:36:33+08:00",
     "endedAt": null
   },
   {
@@ -2283,7 +2283,7 @@
     "product": "256 白",
     "firstSeen": "2026-11-05T20:35:30+08:00",
     "lastSeen": "2026-11-05T20:35:30+08:00",
-    "endedAt": null
+    "endedAt": "2026-11-05T20:36:33+08:00"
   },
   {
     "storeId": "R705",
@@ -2291,7 +2291,16 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-05T20:35:30+08:00",
-    "lastSeen": "2026-11-05T20:35:30+08:00",
+    "lastSeen": "2026-11-05T20:36:33+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R359",
+    "store": "南京东路",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-05T20:36:33+08:00",
+    "lastSeen": "2026-11-05T20:36:33+08:00",
     "endedAt": null
   }
 ]
