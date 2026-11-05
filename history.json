@@ -2581,5 +2581,23 @@
     "firstSeen": "2026-11-05T21:18:30+08:00",
     "lastSeen": "2026-11-05T21:18:30+08:00",
     "endedAt": "2026-11-05T21:19:29+08:00"
+  },
+  {
+    "storeId": "R678",
+    "store": "静安",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-05T21:20:41+08:00",
+    "lastSeen": "2026-11-05T21:20:41+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R705",
+    "store": "七宝",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-05T21:20:41+08:00",
+    "lastSeen": "2026-11-05T21:20:41+08:00",
+    "endedAt": null
   }
 ]
