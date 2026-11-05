@@ -2662,5 +2662,32 @@
     "firstSeen": "2026-11-05T21:29:28+08:00",
     "lastSeen": "2026-11-05T21:29:28+08:00",
     "endedAt": "2026-11-05T21:30:30+08:00"
+  },
+  {
+    "storeId": "R678",
+    "store": "静安",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-05T21:33:30+08:00",
+    "lastSeen": "2026-11-05T21:33:30+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R390",
+    "store": "香港广场",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-05T21:33:30+08:00",
+    "lastSeen": "2026-11-05T21:33:30+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R401",
+    "store": "上海环贸 iapm ",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-05T21:33:30+08:00",
+    "lastSeen": "2026-11-05T21:33:30+08:00",
+    "endedAt": null
   }
 ]
