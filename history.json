@@ -2842,5 +2842,23 @@
     "firstSeen": "2026-11-06T08:08:29+08:00",
     "lastSeen": "2026-11-06T08:09:29+08:00",
     "endedAt": "2026-11-06T08:10:29+08:00"
+  },
+  {
+    "storeId": "R401",
+    "store": "上海环贸 iapm ",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-06T08:15:29+08:00",
+    "lastSeen": "2026-11-06T08:15:29+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R581",
+    "store": "五角场",
+    "part": "MK2N4CH/A",
+    "product": "256 夜空",
+    "firstSeen": "2026-11-06T08:15:29+08:00",
+    "lastSeen": "2026-11-06T08:15:29+08:00",
+    "endedAt": null
   }
 ]
