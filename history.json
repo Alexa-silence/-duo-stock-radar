@@ -3893,7 +3893,7 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-09T18:42:31+08:00",
-    "lastSeen": "2026-11-09T20:27:32+08:00",
+    "lastSeen": "2026-11-09T20:28:30+08:00",
     "endedAt": null
   },
   {
@@ -3938,7 +3938,7 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-09T19:04:31+08:00",
-    "lastSeen": "2026-11-09T20:27:32+08:00",
+    "lastSeen": "2026-11-09T20:28:30+08:00",
     "endedAt": null
   },
   {
@@ -4073,7 +4073,7 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-09T19:53:30+08:00",
-    "lastSeen": "2026-11-09T20:27:32+08:00",
+    "lastSeen": "2026-11-09T20:28:30+08:00",
     "endedAt": null
   },
   {
@@ -4172,7 +4172,7 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-09T20:08:30+08:00",
-    "lastSeen": "2026-11-09T20:27:32+08:00",
+    "lastSeen": "2026-11-09T20:28:30+08:00",
     "endedAt": null
   },
   {
@@ -4254,7 +4254,7 @@
     "product": "512 白",
     "firstSeen": "2026-11-09T20:23:31+08:00",
     "lastSeen": "2026-11-09T20:27:32+08:00",
-    "endedAt": null
+    "endedAt": "2026-11-09T20:28:30+08:00"
   },
   {
     "storeId": "R705",
@@ -4280,7 +4280,25 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-09T20:26:30+08:00",
-    "lastSeen": "2026-11-09T20:27:32+08:00",
+    "lastSeen": "2026-11-09T20:28:30+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R401",
+    "store": "上海环贸 iapm ",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-09T20:28:30+08:00",
+    "lastSeen": "2026-11-09T20:28:30+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R581",
+    "store": "五角场",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-09T20:28:30+08:00",
+    "lastSeen": "2026-11-09T20:28:30+08:00",
     "endedAt": null
   }
 ]
