@@ -3508,5 +3508,23 @@
     "firstSeen": "2026-11-09T09:56:31+08:00",
     "lastSeen": "2026-11-09T09:56:31+08:00",
     "endedAt": "2026-11-09T09:57:31+08:00"
+  },
+  {
+    "storeId": "R359",
+    "store": "南京东路",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-09T10:55:30+08:00",
+    "lastSeen": "2026-11-09T10:55:30+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R683",
+    "store": "环球港",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-09T10:55:30+08:00",
+    "lastSeen": "2026-11-09T10:55:30+08:00",
+    "endedAt": null
   }
 ]
