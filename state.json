@@ -1,7 +1,7 @@
 {
   "R359|MK2M4CH/A": true,
   "R359|MK2N4CH/A": false,
-  "R359|MK2P4CH/A": true,
+  "R359|MK2P4CH/A": false,
   "R389|MK2M4CH/A": false,
   "R389|MK2N4CH/A": false,
   "R389|MK2P4CH/A": false,
@@ -13,7 +13,7 @@
   "R401|MK2P4CH/A": false,
   "R581|MK2M4CH/A": true,
   "R581|MK2N4CH/A": false,
-  "R581|MK2P4CH/A": true,
+  "R581|MK2P4CH/A": false,
   "R678|MK2M4CH/A": false,
   "R678|MK2N4CH/A": false,
   "R678|MK2P4CH/A": false,
@@ -22,5 +22,5 @@
   "R683|MK2P4CH/A": false,
   "R705|MK2M4CH/A": true,
   "R705|MK2N4CH/A": false,
-  "R705|MK2P4CH/A": false
+  "R705|MK2P4CH/A": true
 }
