@@ -1,23 +1,23 @@
 {
-  "checkedAt": "2026-11-12T05:54:49+08:00",
+  "checkedAt": "2026-11-12T06:00:03+08:00",
   "stores": [
     {
       "id": "R678",
       "products": [
         {
           "part": "MK2M4CH/A",
-          "status": "unknown",
-          "quote": ""
+          "status": "unavailable",
+          "quote": "暂无供应"
         },
         {
           "part": "MK2N4CH/A",
-          "status": "unknown",
-          "quote": ""
+          "status": "unavailable",
+          "quote": "暂无供应"
         },
         {
           "part": "MK2P4CH/A",
-          "status": "unknown",
-          "quote": ""
+          "status": "unavailable",
+          "quote": "暂无供应"
         }
       ]
     },
