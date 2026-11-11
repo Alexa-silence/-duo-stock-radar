@@ -6710,7 +6710,16 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-11T14:46:50+08:00",
-    "lastSeen": "2026-11-11T14:47:31+08:00",
+    "lastSeen": "2026-11-11T14:48:29+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R678",
+    "store": "静安",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-11T14:48:29+08:00",
+    "lastSeen": "2026-11-11T14:48:29+08:00",
     "endedAt": null
   }
 ]
