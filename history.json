@@ -7610,7 +7610,7 @@
     "part": "MK2P4CH/A",
     "product": "512 白",
     "firstSeen": "2026-11-12T19:41:30+08:00",
-    "lastSeen": "2026-11-12T19:45:31+08:00",
+    "lastSeen": "2026-11-12T19:46:30+08:00",
     "endedAt": null
   },
   {
@@ -7619,7 +7619,7 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-12T19:44:30+08:00",
-    "lastSeen": "2026-11-12T19:45:31+08:00",
+    "lastSeen": "2026-11-12T19:46:30+08:00",
     "endedAt": null
   },
   {
@@ -7628,7 +7628,16 @@
     "part": "MK2P4CH/A",
     "product": "512 白",
     "firstSeen": "2026-11-12T19:45:31+08:00",
-    "lastSeen": "2026-11-12T19:45:31+08:00",
+    "lastSeen": "2026-11-12T19:46:30+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R581",
+    "store": "五角场",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-12T19:46:30+08:00",
+    "lastSeen": "2026-11-12T19:46:30+08:00",
     "endedAt": null
   }
 ]
