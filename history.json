@@ -7952,7 +7952,7 @@
     "part": "MK2P4CH/A",
     "product": "512 白",
     "firstSeen": "2026-11-12T20:50:31+08:00",
-    "lastSeen": "2026-11-12T21:56:31+08:00",
+    "lastSeen": "2026-11-12T21:57:38+08:00",
     "endedAt": null
   },
   {
@@ -7979,7 +7979,7 @@
     "part": "MK2P4CH/A",
     "product": "512 白",
     "firstSeen": "2026-11-12T20:55:30+08:00",
-    "lastSeen": "2026-11-12T21:56:31+08:00",
+    "lastSeen": "2026-11-12T21:57:38+08:00",
     "endedAt": null
   },
   {
@@ -8376,6 +8376,24 @@
     "product": "512 白",
     "firstSeen": "2026-11-12T21:55:34+08:00",
     "lastSeen": "2026-11-12T21:56:31+08:00",
+    "endedAt": "2026-11-12T21:57:38+08:00"
+  },
+  {
+    "storeId": "R401",
+    "store": "上海环贸 iapm ",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-12T21:57:38+08:00",
+    "lastSeen": "2026-11-12T21:57:38+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R683",
+    "store": "环球港",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-12T21:57:38+08:00",
+    "lastSeen": "2026-11-12T21:57:38+08:00",
     "endedAt": null
   }
 ]
