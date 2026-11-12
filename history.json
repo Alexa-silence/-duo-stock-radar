@@ -6980,7 +6980,16 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-12T08:58:28+08:00",
-    "lastSeen": "2026-11-12T09:07:29+08:00",
+    "lastSeen": "2026-11-12T09:08:30+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R401",
+    "store": "上海环贸 iapm ",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-12T09:08:30+08:00",
+    "lastSeen": "2026-11-12T09:08:30+08:00",
     "endedAt": null
   }
 ]
