@@ -8484,7 +8484,7 @@
     "product": "512 白",
     "firstSeen": "2026-11-12T22:11:31+08:00",
     "lastSeen": "2026-11-12T22:11:31+08:00",
-    "endedAt": null
+    "endedAt": "2026-11-12T22:12:29+08:00"
   },
   {
     "storeId": "R581",
@@ -8492,7 +8492,25 @@
     "part": "MK2P4CH/A",
     "product": "512 白",
     "firstSeen": "2026-11-12T22:11:31+08:00",
-    "lastSeen": "2026-11-12T22:11:31+08:00",
+    "lastSeen": "2026-11-12T22:12:29+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R678",
+    "store": "静安",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-12T22:12:29+08:00",
+    "lastSeen": "2026-11-12T22:12:29+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R678",
+    "store": "静安",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-12T22:12:29+08:00",
+    "lastSeen": "2026-11-12T22:12:29+08:00",
     "endedAt": null
   }
 ]
