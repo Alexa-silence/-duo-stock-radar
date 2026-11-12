@@ -8547,7 +8547,7 @@
     "product": "256 白",
     "firstSeen": "2026-11-12T22:15:31+08:00",
     "lastSeen": "2026-11-12T22:18:30+08:00",
-    "endedAt": null
+    "endedAt": "2026-11-12T22:19:31+08:00"
   },
   {
     "storeId": "R389",
@@ -8564,7 +8564,25 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-12T22:18:30+08:00",
-    "lastSeen": "2026-11-12T22:18:30+08:00",
+    "lastSeen": "2026-11-12T22:19:31+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R389",
+    "store": "浦东",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-12T22:19:31+08:00",
+    "lastSeen": "2026-11-12T22:19:31+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R705",
+    "store": "七宝",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-12T22:19:31+08:00",
+    "lastSeen": "2026-11-12T22:19:31+08:00",
     "endedAt": null
   }
 ]
