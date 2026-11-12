@@ -8475,6 +8475,24 @@
     "product": "512 白",
     "firstSeen": "2026-11-12T22:10:29+08:00",
     "lastSeen": "2026-11-12T22:10:29+08:00",
+    "endedAt": "2026-11-12T22:11:31+08:00"
+  },
+  {
+    "storeId": "R390",
+    "store": "香港广场",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-12T22:11:31+08:00",
+    "lastSeen": "2026-11-12T22:11:31+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R581",
+    "store": "五角场",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-12T22:11:31+08:00",
+    "lastSeen": "2026-11-12T22:11:31+08:00",
     "endedAt": null
   }
 ]
