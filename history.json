@@ -8978,7 +8978,7 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-13T09:21:29+08:00",
-    "lastSeen": "2026-11-13T09:24:29+08:00",
+    "lastSeen": "2026-11-13T09:25:29+08:00",
     "endedAt": null
   },
   {
@@ -8996,7 +8996,7 @@
     "part": "MK2P4CH/A",
     "product": "512 白",
     "firstSeen": "2026-11-13T09:23:32+08:00",
-    "lastSeen": "2026-11-13T09:24:29+08:00",
+    "lastSeen": "2026-11-13T09:25:29+08:00",
     "endedAt": null
   },
   {
@@ -9005,7 +9005,16 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-13T09:24:29+08:00",
-    "lastSeen": "2026-11-13T09:24:29+08:00",
+    "lastSeen": "2026-11-13T09:25:29+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R683",
+    "store": "环球港",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-13T09:25:29+08:00",
+    "lastSeen": "2026-11-13T09:25:29+08:00",
     "endedAt": null
   }
 ]
