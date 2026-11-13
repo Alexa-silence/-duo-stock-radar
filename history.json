@@ -9087,6 +9087,24 @@
     "product": "512 白",
     "firstSeen": "2026-11-13T09:48:31+08:00",
     "lastSeen": "2026-11-13T09:48:31+08:00",
+    "endedAt": "2026-11-13T09:49:30+08:00"
+  },
+  {
+    "storeId": "R359",
+    "store": "南京东路",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-13T09:49:30+08:00",
+    "lastSeen": "2026-11-13T09:49:30+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R705",
+    "store": "七宝",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-13T09:49:30+08:00",
+    "lastSeen": "2026-11-13T09:49:30+08:00",
     "endedAt": null
   }
 ]
