@@ -10076,7 +10076,7 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-13T20:02:16+08:00",
-    "lastSeen": "2026-11-13T20:06:32+08:00",
+    "lastSeen": "2026-11-13T20:07:31+08:00",
     "endedAt": null
   },
   {
@@ -10085,7 +10085,7 @@
     "part": "MK2N4CH/A",
     "product": "256 夜空",
     "firstSeen": "2026-11-13T20:02:16+08:00",
-    "lastSeen": "2026-11-13T20:06:32+08:00",
+    "lastSeen": "2026-11-13T20:07:31+08:00",
     "endedAt": null
   },
   {
@@ -10094,7 +10094,7 @@
     "part": "MK2P4CH/A",
     "product": "512 白",
     "firstSeen": "2026-11-13T20:02:16+08:00",
-    "lastSeen": "2026-11-13T20:06:32+08:00",
+    "lastSeen": "2026-11-13T20:07:31+08:00",
     "endedAt": null
   },
   {
@@ -10103,7 +10103,7 @@
     "part": "MK2P4CH/A",
     "product": "512 白",
     "firstSeen": "2026-11-13T20:02:16+08:00",
-    "lastSeen": "2026-11-13T20:06:32+08:00",
+    "lastSeen": "2026-11-13T20:07:31+08:00",
     "endedAt": null
   },
   {
@@ -10112,7 +10112,7 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-13T20:02:37+08:00",
-    "lastSeen": "2026-11-13T20:06:32+08:00",
+    "lastSeen": "2026-11-13T20:07:31+08:00",
     "endedAt": null
   },
   {
@@ -10121,7 +10121,7 @@
     "part": "MK2N4CH/A",
     "product": "256 夜空",
     "firstSeen": "2026-11-13T20:02:37+08:00",
-    "lastSeen": "2026-11-13T20:06:32+08:00",
+    "lastSeen": "2026-11-13T20:07:31+08:00",
     "endedAt": null
   },
   {
@@ -10130,7 +10130,34 @@
     "part": "MK2P4CH/A",
     "product": "512 白",
     "firstSeen": "2026-11-13T20:04:39+08:00",
-    "lastSeen": "2026-11-13T20:06:32+08:00",
+    "lastSeen": "2026-11-13T20:07:31+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R401",
+    "store": "上海环贸 iapm ",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-13T20:07:31+08:00",
+    "lastSeen": "2026-11-13T20:07:31+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R401",
+    "store": "上海环贸 iapm ",
+    "part": "MK2N4CH/A",
+    "product": "256 夜空",
+    "firstSeen": "2026-11-13T20:07:31+08:00",
+    "lastSeen": "2026-11-13T20:07:31+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R401",
+    "store": "上海环贸 iapm ",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-13T20:07:31+08:00",
+    "lastSeen": "2026-11-13T20:07:31+08:00",
     "endedAt": null
   }
 ]
