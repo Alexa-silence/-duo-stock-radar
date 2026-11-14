@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-14T14:03:34+08:00",
+  "checkedAt": "2026-11-14T14:04:29+08:00",
   "stores": [
     {
       "id": "R678",
@@ -116,8 +116,8 @@
         },
         {
           "part": "MK2P4CH/A",
-          "status": "unavailable",
-          "quote": "暂无供应"
+          "status": "available",
+          "quote": "今天可取货"
         }
       ]
     },
