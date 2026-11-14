@@ -11238,7 +11238,7 @@
     "product": "256 白",
     "firstSeen": "2026-11-14T10:21:31+08:00",
     "lastSeen": "2026-11-14T10:22:31+08:00",
-    "endedAt": null
+    "endedAt": "2026-11-14T10:23:29+08:00"
   },
   {
     "storeId": "R401",
@@ -11246,7 +11246,16 @@
     "part": "MK2M4CH/A",
     "product": "256 白",
     "firstSeen": "2026-11-14T10:22:31+08:00",
-    "lastSeen": "2026-11-14T10:22:31+08:00",
+    "lastSeen": "2026-11-14T10:23:29+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R390",
+    "store": "香港广场",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-14T10:23:29+08:00",
+    "lastSeen": "2026-11-14T10:23:29+08:00",
     "endedAt": null
   }
 ]
