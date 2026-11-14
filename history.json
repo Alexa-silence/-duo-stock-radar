@@ -10897,5 +10897,23 @@
     "firstSeen": "2026-11-14T08:09:29+08:00",
     "lastSeen": "2026-11-14T08:10:35+08:00",
     "endedAt": "2026-11-14T08:11:36+08:00"
+  },
+  {
+    "storeId": "R581",
+    "store": "五角场",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-14T08:23:31+08:00",
+    "lastSeen": "2026-11-14T08:23:31+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R581",
+    "store": "五角场",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-14T08:23:31+08:00",
+    "lastSeen": "2026-11-14T08:23:31+08:00",
+    "endedAt": null
   }
 ]
