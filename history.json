@@ -12164,7 +12164,16 @@
     "part": "MK2P4CH/A",
     "product": "512 白",
     "firstSeen": "2026-11-16T20:00:40+08:00",
-    "lastSeen": "2026-11-16T20:01:31+08:00",
+    "lastSeen": "2026-11-16T20:02:32+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R705",
+    "store": "七宝",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-16T20:02:32+08:00",
+    "lastSeen": "2026-11-16T20:02:32+08:00",
     "endedAt": null
   }
 ]
