@@ -11950,5 +11950,23 @@
     "firstSeen": "2026-11-16T12:32:34+08:00",
     "lastSeen": "2026-11-16T12:32:34+08:00",
     "endedAt": "2026-11-16T12:33:36+08:00"
+  },
+  {
+    "storeId": "R678",
+    "store": "静安",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-16T14:30:31+08:00",
+    "lastSeen": "2026-11-16T14:30:31+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R359",
+    "store": "南京东路",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-16T14:30:31+08:00",
+    "lastSeen": "2026-11-16T14:30:31+08:00",
+    "endedAt": null
   }
 ]
