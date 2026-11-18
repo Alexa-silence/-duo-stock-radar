@@ -12742,5 +12742,32 @@
     "firstSeen": "2026-11-18T08:42:29+08:00",
     "lastSeen": "2026-11-18T08:42:29+08:00",
     "endedAt": "2026-11-18T08:43:30+08:00"
+  },
+  {
+    "storeId": "R581",
+    "store": "五角场",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-18T08:45:34+08:00",
+    "lastSeen": "2026-11-18T08:45:34+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R581",
+    "store": "五角场",
+    "part": "MK2N4CH/A",
+    "product": "256 夜空",
+    "firstSeen": "2026-11-18T08:45:34+08:00",
+    "lastSeen": "2026-11-18T08:45:34+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R581",
+    "store": "五角场",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-18T08:45:34+08:00",
+    "lastSeen": "2026-11-18T08:45:34+08:00",
+    "endedAt": null
   }
 ]
