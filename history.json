@@ -13217,7 +13217,25 @@
     "part": "MK2P4CH/A",
     "product": "512 白",
     "firstSeen": "2026-11-18T21:59:32+08:00",
-    "lastSeen": "2026-11-18T22:00:36+08:00",
+    "lastSeen": "2026-11-18T22:01:31+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R359",
+    "store": "南京东路",
+    "part": "MK2P4CH/A",
+    "product": "512 白",
+    "firstSeen": "2026-11-18T22:01:31+08:00",
+    "lastSeen": "2026-11-18T22:01:31+08:00",
+    "endedAt": null
+  },
+  {
+    "storeId": "R401",
+    "store": "上海环贸 iapm ",
+    "part": "MK2M4CH/A",
+    "product": "256 白",
+    "firstSeen": "2026-11-18T22:01:31+08:00",
+    "lastSeen": "2026-11-18T22:01:31+08:00",
     "endedAt": null
   }
 ]
